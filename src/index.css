@@ -20,13 +20,24 @@
   justify-content: space-between;
 }
 
-#surname{
-  margin-left: 5%;
-}
-
 
 form {
   width:100%
+}
+
+#surname{
+  width: 151px;
+}
+
+#name{
+  margin-right: 2px;
+  width: 151px;
+}
+
+#email{
+  margin-top: 2px;
+  display: block;
+  width: 312px;
 }
 
 html, body{
