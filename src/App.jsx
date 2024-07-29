@@ -9,12 +9,14 @@ function Button () {
 
 function App() {
   const [name, setName] = useState('');
-  const[person, setPerson] = useState({personName: ""})
+  const [surname, setSurname] = useState('');
+
+  const[person, setPerson] = useState({personName: "", personSurname: ""})
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setPerson({personName: name})
-    console.log("name is now", name)
+    setPerson({personName: name, personSurname: surname})
+    console.log("name is", name, "surname is", surname)
   }
 
   return (
@@ -25,6 +27,13 @@ function App() {
     value = {name}
     onChange = {e => setName(e.target.value)}
     placeholder='enter your name'
+    />
+    
+    <input id="surname"
+    type="text"
+    value = {surname}
+    onChange = {e => setSurname(e.target.value)}
+    placeholder='enter your surname'
     />
     <Button />
     </form>
