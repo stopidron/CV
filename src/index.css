@@ -40,6 +40,12 @@ form {
   width: 312px;
 }
 
+#phone{
+  margin-top: 2px;
+  display: block;
+  width: 151px;
+}
+
 html, body{
   height: 100%;
   margin: 0;

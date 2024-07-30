@@ -7,7 +7,9 @@ function App() {
   const[person, setPerson] = useState({
     personName: "", 
     personSurname: "", 
-    personEmail: ""}
+    personEmail: "",
+    personPhone:""
+  }
   )
 
   const handleChange = (event) => {
@@ -23,7 +25,8 @@ function App() {
   const formFields = [
     { id: 'name', placeholder: 'Enter your name', unique: 'personName'},
     { id: 'surname', placeholder: 'Enter your surname', unique: 'personSurname'},
-    { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'}
+    { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'},
+    {id: 'phone', placeholder: 'Enter your phone number', unique: 'personPhone'}
   ];
 
   return (
