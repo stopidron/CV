@@ -3,52 +3,46 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function Button () {
-  return <button type="submit">SUBMIT</button>
-}
-
 function App() {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
+  const[person, setPerson] = useState({
+    personName: "", 
+    personSurname: "", 
+    personEmail: ""}
+  )
 
-  const[person, setPerson] = useState({personName: "", personSurname: "", personEmail: ""})
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setPerson(prevData => ({...prevData, [name]: value}))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setPerson({personName: name, personSurname: surname, personEmail: email})
-    console.log("name is", name, "surname is", surname, "email is", email)
+    console.log("Data", person)
   }
 
+  const formFields = [
+    { id: 'name', placeholder: 'Enter your name', unique: 'personName'},
+    { id: 'surname', placeholder: 'Enter your surname', unique: 'personSurname'},
+    { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'}
+  ];
+
   return (
-    <>
-    <form onSubmit = {handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <section>
-    <input id="name"
-    type="text"
-    value = {name}
-    onChange = {e => setName(e.target.value)}
-    placeholder='enter your name'
-    />
-    
-    <input id="surname"
-    type="text"
-    value = {surname}
-    onChange = {e => setSurname(e.target.value)}
-    placeholder='enter your surname'
-    />
-    <input id="email"
-    type="text"
-    value = {email}
-    onChange = {e => setEmail(e.target.value)}
-    placeholder='enter your email'
-    />
-    </section>
-    <section>
-    </section>
-    <Button />
+        {formFields.map(field => (
+          <input
+            key={field.id}
+            id={field.id}
+            type="text"
+            name={field.unique}
+            value={person[field.unique]}
+            onChange={handleChange}
+            placeholder={field.placeholder}
+          />
+        ))}
+      </section>
+      <button type="submit">Submit</button>
     </form>
-    </>
   );
 }
 
