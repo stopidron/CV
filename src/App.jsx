@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const[person, setPerson] = useState({
+
+  const [person, setPerson] = useState({
     personName: "", 
     personSurname: "", 
     personEmail: "",
@@ -29,20 +30,33 @@ function App() {
     {id: 'phone', placeholder: 'Enter your phone number', unique: 'personPhone'}
   ];
 
+  function Input(fields, change, thing){
+    console.log("formFields", formFields);  
+    return (
+      <>
+      {formFields.map(field => (
+            <input
+              key={field.id}
+              id={field.id}
+              type="text"
+              name={field.unique}
+              value={person[field.unique]}
+              onChange={handleChange}
+              placeholder={field.placeholder}
+            />
+          ))}
+      </>
+    );
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <section>
-        {formFields.map(field => (
-          <input
-            key={field.id}
-            id={field.id}
-            type="text"
-            name={field.unique}
-            value={person[field.unique]}
-            onChange={handleChange}
-            placeholder={field.placeholder}
-          />
-        ))}
+      <Input 
+      fields = {formFields}
+      change = {handleChange}
+      thing = {person}
+      />
       </section>
       <button type="submit">Submit</button>
     </form>
