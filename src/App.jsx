@@ -13,7 +13,11 @@ function App() {
     personPhone:"",
     personSchool:"",
     personTitle:"",
-    personDate:""
+    personDate:"",
+    personCompany:"",
+    personPosition:"",
+    personFrom:"",
+    personUntil:""
 
   }
   );
@@ -39,6 +43,12 @@ function App() {
       { id: 'school', placeholder: 'Enter the name of your school', unique: 'personSchool'},
       { id: 'title', placeholder: 'Enter your study title', unique: 'personTitle'},
       { id: 'date', placeholder: 'Date', unique: 'personDate'}
+    ],
+    [
+      {id: 'company', placeholder: 'Company name', unique: 'personCompany'},
+      {id: 'position', placeholder: 'Position title', unique: 'personPosition'},
+      {id: 'from', placeholder: 'Start date', unique: 'personFrom'},
+      {id: 'until', placeholder: 'End date', unique: 'personUntil'},
     ]
   ];
 
