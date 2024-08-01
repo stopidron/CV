@@ -6,42 +6,54 @@ import Input from './Input';
 
 
 function App() {
-
   const [person, setPerson] = useState({
     personName: "", 
     personSurname: "", 
     personEmail: "",
-    personPhone:""
+    personPhone:"",
+    personSchool:"",
+    personTitle:"",
+    personDate:""
+
   }
-  )
+  );
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setPerson(prevData => ({...prevData, [name]: value}))
-  }
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefauelt();
     console.log("Data", person)
-  }
+  };
 
   const general = [
-    { id: 'name', placeholder: 'Enter your name', unique: 'personName'},
-    { id: 'surname', placeholder: 'Enter your surname', unique: 'personSurname'},
-    { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'},
-    {id: 'phone', placeholder: 'Enter your phone number', unique: 'personPhone'}
+    [
+      { id: 'name', placeholder: 'Enter your name', unique: 'personName'},
+      { id: 'surname', placeholder: 'Enter your surname', unique: 'personSurname'},
+      { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'},
+      { id: 'phone', placeholder: 'Enter your phone number', unique: 'personPhone'}
+    ],
+    [
+      { id: 'school', placeholder: 'Enter the name of your school', unique: 'personSchool'},
+      { id: 'title', placeholder: 'Enter your study title', unique: 'personTitle'},
+      { id: 'date', placeholder: 'Date', unique: 'personDate'}
+    ]
   ];
 
   return (
     <form onSubmit={handleSubmit}>
-      <section>
+      {general.map((section, index) => (
+      <section key={index}>
       <Input 
-      info = {general}
+      info = {section}
       change = {handleChange}
       thing = {person}
       />
-      </section>
       <button type="submit">Submit</button>
+      </section>
+      ))}
     </form>
   );
 }
