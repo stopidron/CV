@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Input from './Input';
 
@@ -18,7 +16,6 @@ function App() {
     personPosition:"",
     personFrom:"",
     personUntil:""
-
   }
   );
 
@@ -27,14 +24,14 @@ function App() {
     setPerson(prevData => ({...prevData, [name]: value}))
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefauelt();
-    console.log("Data", person)
+
+  const handleSectionClick = (index) => {
+    console.log(`Button from section ${index + 1} clicked`);
   };
 
   const general = [
     [
-      { id: 'name', placeholder: 'Enter your name', unique: 'personName'},
+      { id: 'name', placeholder: 'Enter your name', unique: 'personName' },
       { id: 'surname', placeholder: 'Enter your surname', unique: 'personSurname'},
       { id: 'email', placeholder: 'Enter your email', unique: 'personEmail'},
       { id: 'phone', placeholder: 'Enter your phone number', unique: 'personPhone'}
@@ -53,16 +50,16 @@ function App() {
   ];
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       {general.map((section, index) => (
-      <section key={index}>
-      <Input 
-      info = {section}
-      change = {handleChange}
-      thing = {person}
-      />
-      <button type="submit">Submit</button>
-      </section>
+        <section key={index}>
+          <Input 
+            info={section}
+            change={handleChange}
+            thing={person}
+          />
+          <button type="submit" onClick={() => handleSectionClick(index)}>Section {index + 1}</button>
+        </section>
       ))}
     </form>
   );
